@@ -1,28 +1,65 @@
 //First presentation component the Todo From
 
-import React from 'react';
+import React, { Component } from 'react';
 
-const ToDoForm = ({ addTodo }) => {
-  // Input Tracker
-  let input;
-  // Return JSX
-  return (
-    <form onSubmit={(e) => {
-        e.preventDefault();
-        addTodo(input.value);
-        input.value = '';
-      }}>
-      <input className="form-control col-md-12" ref={node => {
-        input = node;
-      }} />
-      <br />
-    </form>
-  );
-};
+class ToDoForm extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      value: ''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleNewTodoAddition = this.handleNewTodoAddition.bind(this);
+  }
+  
+  handleChange(event) {
+
+    this.setState({
+      value: event.target.value
+    });
+
+  }
+  
+  handleNewTodoAddition() {
+    if(this.input.value !== '') {
+      this.props.addTodo(this.input.value);
+      this.setState({
+        value: ''
+      });
+      this.input.placeholder = "Add todo here...";
+    }
+  }
+  
+  render() {
+    return (
+      // ref should be passed a callback
+      // with underlying dom element as its
+      // argument to get its reference 
+      <div id="form">
+        <input 
+          ref={node => {
+            this.input = node;
+          }}
+          value={this.state.value}
+          placeholder="Add todos here..."
+          autoComplete="off"
+          onChange={this.handleChange}
+        />
+
+        <button 
+          onClick={this.handleNewTodoAddition}> 
+          +
+        </button> 
+      </div>
+    );
+  }
+}
+
 
 export default ToDoForm;
-
-
 
 //Functional components just receive props (which we destructured with ES6) as arguments and return JSX to be rendered. TodoForm has just one prop which is a handler that handles the click event for adding a new todo.
 

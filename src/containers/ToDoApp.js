@@ -3,12 +3,12 @@ import ToDoForm from '../components/ToDoForm';
 import TodoList from '../components/TodoList';
 import Title from '../components/Title';
 import axios from 'axios';
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
 
 
 
 window.id = 0;
-class ToDoApp extends React.Component{
+class ToDoApp extends Component {
   constructor(props){
     // Pass props to parent class
     super(props);
@@ -66,16 +66,11 @@ class ToDoApp extends React.Component{
   }
 }
 
-
 export default ToDoApp;
-
 /*
 We first setup the component's constructor by passing props to the parent class and setting the initial state of our application.
 
 Next we create handlers for adding and removing todo which the events are fired in TodoForm component and Todo component respectively. setState method is used to update the application state at any point.
 
 As usual, we render the JSX passing in our props which will be received by the the child components.
-
-
-
 */

@@ -4,7 +4,8 @@ const Title = ({ todoCount }) => {
   return (
     <div>
        <div>
-          <h1>to-do ({todoCount})</h1>
+          <h1>My To-Do List</h1>
+          <h2>Items on my to-do List: ({ todoCount })</h2>
        </div>
     </div>
   );

@@ -1,9 +1,20 @@
 import React from 'react';
 
+
 const ToDo = ({todo, remove}) => {
-  // Each Todo
-  return (<a href="#" className="list-group-item" onClick={() => {remove(todo.id)}}>{todo.text}</a>);
-}
+	// single todo 
+	return (
+		<p className="todos">
+			{todo.value}
+			<span 
+				className="removeBtn"
+				onClick={()=> {
+					remove(todo.id)}}>
+				{todo.text} x
+			</span>
+		</p>
+	);
+};
 
 
 export default ToDo;
